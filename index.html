@@ -1,13 +1,17 @@
 <html>
     <div>
-        <p>
+        <p id="ali">
             Hi Ali Arif
         </p>
-    </div>
+        <div class="side-by-side">
+            <p id="message">The time is: </p>
+            <p id="time"></p>
+        </div>
+        </div>
 </html>
 
 <style>
-    p {
+    #ali {
     color: gray;
     font-size: 100px;
     width: 30%;
@@ -18,4 +22,46 @@
     left: 34%;
     height: 10%;
     }
+
+    #time {
+    color: rgb(84, 83, 83);
+    font-size: 50px;
+    text-align: center;
+    height: 10%;
+    }
+
+    #message {
+    color: black;
+    font-size: 50px;
+    text-align: center;
+    height: 10%;
+    }
+    
+    .side-by-side {
+    display: flex;
+    width: max-content;
+    margin: auto;
+    text-align: center;
+    }
 </style>
+
+<script>
+
+    function getTime () {
+        const currentTime = new Date();
+        const hours = currentTime.getHours().toString().padStart(2, '0');
+        const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+        const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+        const formattedTime = `${hours}:${minutes}:${seconds}`;
+        
+        document.getElementById('time').innerText = formattedTime;
+    }
+
+    getTime();
+
+    var intervalId = window.setInterval(function(){
+        getTime();
+
+    }, 1000);
+
+</script>
